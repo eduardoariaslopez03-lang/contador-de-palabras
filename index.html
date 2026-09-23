@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Palabras y Caracteres Online | Gratis y Rápido</title>
+    <meta name="description" content="Cuenta palabras, caracteres, párrafos y tiempo estimado de lectura en tiempo real. Herramienta gratuita para estudiantes y redactores.">
+    <!-- Tailwind CSS desde CDN para diseño moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- SCRIPT DE GOOGLE ADSENSE (Descomenta e inserta tu código ca-pub cuando te lo dé AdSense) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Encabezado / Navegación -->
+    <header class="bg-white shadow-sm border-b border-gray-200 py-4">
+        <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-blue-600">ContadorText</h1>
+            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-medium">Herramienta Gratuita</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 w-full flex-grow">
+        <div class="text-center mb-6">
+            <h2 class="text-3xl font-extrabold text-gray-900">Contador de Palabras y Caracteres</h2>
+            <p class="text-gray-600 mt-2">Pega o escribe tu texto a continuación para analizarlo en tiempo real.</p>
+        </div>
+
+        <!-- ESPACIO RESERVADO PARA ANUNCIO SUPERIOR (ADSENSE) -->
+        <div class="my-4 p-2 bg-gray-100 border border-dashed border-gray-300 rounded text-center text-xs text-gray-400 min-h-[90px] flex items-center justify-center">
+            [Espacio reservado para Anuncio Google AdSense]
+        </div>
+
+        <!-- HERRAMIENTA PRINCIPAL -->
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+            <textarea id="inputText" rows="8" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="Escribe o pega tu texto aquí..."></textarea>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 text-center">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <span id="wordCount" class="block text-2xl font-bold text-blue-600">0</span>
+                    <span class="text-xs font-semibold text-gray-500 uppercase">Palabras</span>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <span id="charCount" class="block text-2xl font-bold text-green-600">0</span>
+                    <span class="text-xs font-semibold text-gray-500 uppercase">Caracteres</span>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <span id="paragraphCount" class="block text-2xl font-bold text-yellow-600">0</span>
+                    <span class="text-xs font-semibold text-gray-500 uppercase">Párrafos</span>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <span id="readTime" class="block text-2xl font-bold text-purple-600">0 min</span>
+                    <span class="text-xs font-semibold text-gray-500 uppercase">Lectura</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESPACIO RESERVADO PARA ANUNCIO INFERIOR (ADSENSE) -->
+        <div class="my-6 p-2 bg-gray-100 border border-dashed border-gray-300 rounded text-center text-xs text-gray-400 min-h-[250px] flex items-center justify-center">
+            [Espacio reservado para Anuncio Google AdSense]
+        </div>
+
+        <!-- SECCIÓN DE TEXTO SEO (REQUISITO PARA QUE GOOGLE APRUEBE LA WEB) -->
+        <section class="mt-8 bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-sm text-gray-600 space-y-4">
+            <h3 class="text-lg font-bold text-gray-800">¿Cómo funciona esta herramienta?</h3>
+            <p>Nuestra herramienta de contador de palabras en línea procesa instantáneamente el texto que ingresas mediante JavaScript en tu propio navegador. Esto significa que tus datos son completamente privados y nunca se envían ni se almacenan en ningún servidor externo.</p>
+
+            <h3 class="text-lg font-bold text-gray-800">¿Por qué es útil contar palabras y caracteres?</h3>
+            <p>Es una solución ideal para estudiantes universitarios que deben cumplir con límites estrictos de palabras en ensayos o trabajos académicos, redactores SEO que optimizan artículos para motores de búsqueda, y profesionales que preparan publicaciones para redes sociales con restricciones de espacio.</p>
+        </section>
+    </main>
+
+    <!-- FOOTER Y ENLACES LEGALES (OBLIGATORIO PARA LA APROBACIÓN EN ADSENSE) -->
+    <footer class="bg-white border-t border-gray-200 py-6 mt-12 text-center text-xs text-gray-500">
+        <div class="max-w-4xl mx-auto px-4 space-x-4">
+            <a href="#" class="hover:underline">Política de Privacidad</a>
+            <span>•</span>
+            <a href="#" class="hover:underline">Aviso Legal</a>
+            <span>•</span>
+            <a href="#" class="hover:underline">Contacto</a>
+        </div>
+        <p class="mt-2">© 2026 ContadorText - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- LÓGICA DE PROGRAMACIÓN EN JAVASCRIPT -->
+    <script>
+        const inputText = document.getElementById('inputText');
+        const wordCount = document.getElementById('wordCount');
+        const charCount = document.getElementById('charCount');
+        const paragraphCount = document.getElementById('paragraphCount');
+        const readTime = document.getElementById('readTime');
+
+        inputText.addEventListener('input', () => {
+            const text = inputText.value;
+            
+            // Conteo de Caracteres
+            charCount.textContent = text.length;
+
+            // Conteo de Palabras
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            wordCount.textContent = text.trim() === '' ? 0 : words.length;
+
+            // Conteo de Párrafos
+            const paragraphs = text.split(/\n+/).filter(para => para.trim().length > 0);
+            paragraphCount.textContent = text.trim() === '' ? 0 : paragraphs.length;
+
+            // Tiempo estimado de lectura (promedio de 200 palabras por minuto)
+            const minutes = Math.ceil(words.length / 200);
+            readTime.textContent = text.trim() === '' ? '0 min' : `${minutes} min`;
+        });
+    </script>
+</body>
+</html>
