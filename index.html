@@ -100,7 +100,7 @@
         <!-- Sección Informativa / SEO -->
         <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm space-y-4">
             <h3 class="text-lg font-bold text-gray-800 dark:text-white">¿Por qué es importante contar palabras y caracteres?</h3>
-            <p>Contar la extensión de un texto es esencial para cumplir con límites en redes sociales (como X/Twitter o publicaciones de LinkedIn), redactar ensayos universitarios, optimizar artículos SEO para motores de búsqueda o mantener la longitud exacta en tus copys publicitarios.</p>
+            <p>Contar la extensión de un texto es esencial para cumplir con límites en redes sociales, redactar ensayos universitarios, optimizar artículos SEO o mantener la longitud exacta en tus copys publicitarios.</p>
         </section>
     </main>
 
@@ -120,7 +120,6 @@
 
     <!-- Lógica JS -->
     <script>
-        // Modo Oscuro Toggle
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -144,7 +143,6 @@
             }
         });
 
-        // Contador de Palabras
         const textInput = document.getElementById('text-input');
         const wordCount = document.getElementById('word-count');
         const charCount = document.getElementById('char-count');
@@ -161,23 +159,13 @@
 
         function updateCounts() {
             const text = textInput.value;
-
-            // Caracteres totales
             charCount.textContent = text.length;
-
-            // Caracteres sin espacios
             charNoSpacesCount.textContent = text.replace(/\s/g, '').length;
-
-            // Palabras
             const words = text.trim().split(/\s+/).filter(item => item.length > 0);
             const numWords = text.trim() === '' ? 0 : words.length;
             wordCount.textContent = numWords;
-
-            // Párrafos
             const paragraphs = text.split(/\n+/).filter(item => item.trim().length > 0);
             paragraphCount.textContent = text.trim() === '' ? 0 : paragraphs.length;
-
-            // Tiempo de lectura (promedio 200 palabras/min)
             const minutes = Math.ceil(numWords / 200);
             readingTime.textContent = `Tiempo estimado de lectura: ${numWords === 0 ? 0 : minutes} min`;
         }

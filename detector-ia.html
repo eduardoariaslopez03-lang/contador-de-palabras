@@ -72,9 +72,9 @@
             </div>
         </div>
 
-        <!-- Botón Analizar -->
-        <div class="flex justify-center mb-8">
-            <button id="btn-analyze" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md text-sm transition">Analizar Texto</button>
+        <!-- Botón Analizar Clásico -->
+        <div class="mb-8">
+            <button id="btn-analyze" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-sm transition shadow-sm">Analizar Texto</button>
         </div>
 
         <!-- Resultados -->
@@ -126,7 +126,6 @@
 
     <!-- Lógica JS -->
     <script>
-        // Modo Oscuro Toggle
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -150,7 +149,6 @@
             }
         });
 
-        // Detector JS
         const textInput = document.getElementById('text-input');
         const wordCountInfo = document.getElementById('word-count-info');
         const btnClear = document.getElementById('btn-clear');
@@ -160,7 +158,6 @@
         const progressBar = document.getElementById('progress-bar');
         const analysisSummary = document.getElementById('analysis-summary');
 
-        // Palabras / Frases clave asociadas a IA
         const aiKeywords = [
             "en resumen", "por lo tanto", "es fundamental", "en conclusión", "cabe destacar",
             "en primer lugar", "además", "sin embargo", "en este sentido", "es importante señalar",
@@ -188,9 +185,7 @@
                 return;
             }
 
-            let score = 15; // Puntuación base
-            
-            // Evaluar conectores
+            let score = 15;
             let matches = 0;
             aiKeywords.forEach(kw => {
                 if (text.includes(kw)) matches++;
@@ -198,22 +193,17 @@
 
             score += matches * 12;
 
-            // Variabilidad de longitud de frases (Burstiness)
             const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
             if (sentences.length > 2) {
                 const lengths = sentences.map(s => s.trim().split(/\s+/).length);
                 const avg = lengths.reduce((a, b) => a + b, 0) / lengths.length;
                 const variance = lengths.reduce((a, b) => a + Math.pow(b - avg, 2), 0) / lengths.length;
-                
-                // Las IAs tienden a tener oraciones muy homogéneas (poca varianza)
                 if (variance < 10) score += 20;
             }
 
-            // Limitar puntuación final
             if (score > 95) score = 95;
             if (score < 5) score = 5;
 
-            // Renderizar resultados
             aiPercentage.textContent = `${score}%`;
             progressBar.style.width = `${score}%`;
 

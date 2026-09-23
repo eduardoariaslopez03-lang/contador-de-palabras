@@ -72,16 +72,13 @@
             </div>
         </div>
 
-        <!-- Botones de Acción -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-            <button id="btn-uppercase" class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">MAYÚSCULAS</button>
-            <button id="btn-lowercase" class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">minúsculas</button>
-            <button id="btn-titlecase" class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">Tipo Título</button>
-            <button id="btn-sentencecase" class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">Tipo frase</button>
-        </div>
-
-        <div class="flex justify-center mb-8">
-            <button id="btn-copy" class="w-full sm:w-auto px-8 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md text-sm transition">Copiar Texto</button>
+        <!-- Botones de Acción Clásicos -->
+        <div class="flex flex-wrap gap-3 mb-6">
+            <button id="btn-uppercase" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-sm transition shadow-sm">MAYÚSCULAS</button>
+            <button id="btn-lowercase" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-sm transition shadow-sm">minúsculas</button>
+            <button id="btn-titlecase" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-sm transition shadow-sm">Tipo Título</button>
+            <button id="btn-sentencecase" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-sm transition shadow-sm">Tipo frase</button>
+            <button id="btn-copy" class="px-5 py-2 bg-gray-800 dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 text-white font-medium rounded-lg text-sm transition shadow-sm ml-auto">Copiar Texto</button>
         </div>
 
         <!-- Anuncio AdSense Inferior -->
@@ -117,7 +114,6 @@
 
     <!-- Lógica JS -->
     <script>
-        // Modo Oscuro Toggle
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -141,7 +137,6 @@
             }
         });
 
-        // Conversor JS
         const textInput = document.getElementById('text-input');
         const btnClear = document.getElementById('btn-clear');
         const btnCopy = document.getElementById('btn-copy');
