@@ -6,6 +6,16 @@
     <title>Contador de Palabras y Caracteres Gratis | HerramientasText</title>
     <meta name="description" content="Cuenta palabras, caracteres, párrafos y tiempo de lectura en tiempo real con nuestra herramienta gratuita online.">
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag.js?id=G-DJMCDOKBGF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DJMCDOKBGF');
+    </script>
+
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
