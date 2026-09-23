@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Mayúsculas y Minúsculas Online | Limpiador de Texto</title>
+    <meta name="description" content="Herramienta gratuita para cambiar texto a mayúsculas, minúsculas, Tipo Título, Tipo Frase y limpiar espacios dobles al instante.">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google AdSense Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1742184952303724"
+         crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Navegación con Menú -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <h1 class="text-xl font-bold text-indigo-600">HerramientasText</h1>
+                <span class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
+            </div>
+            <nav class="flex gap-4 text-sm font-medium">
+                <a href="index.html" class="text-gray-600 hover:text-indigo-600 transition">Contador de Palabras</a>
+                <a href="conversor.html" class="text-indigo-600 font-bold border-b-2 border-indigo-600 pb-1">Conversor de Texto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Conversor y Limpiador de Texto</h2>
+            <p class="text-gray-600">Transforma tu texto a mayúsculas, minúsculas, formato título o limpia formatos con un solo clic.</p>
+        </div>
+
+        <!-- Banner AdSense Superior -->
+        <div class="my-6 min-h-[90px] bg-gray-100 border border-dashed border-gray-300 rounded-lg flex items-center justify-center text-xs text-gray-400">
+            [Espacio reservado para Anuncio Google AdSense]
+        </div>
+
+        <!-- Área de Texto -->
+        <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 mb-8">
+            <textarea 
+                id="text-input" 
+                class="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y text-gray-700 placeholder-gray-400 focus:outline-none transition" 
+                placeholder="Escribe o pega tu texto aquí para convertirlo..."></textarea>
+
+            <!-- Botones de Conversión -->
+            <div class="flex flex-wrap gap-2 mt-4">
+                <button id="btn-uppercase" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">MAYÚSCULAS</button>
+                <button id="btn-lowercase" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">minúsculas</button>
+                <button id="btn-titlecase" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">Tipo Título</button>
+                <button id="btn-sentencecase" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">Tipo Frase</button>
+                <button id="btn-clean-spaces" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">Quitar Espacios Extra</button>
+            </div>
+
+            <!-- Botones de Utilidades de Copia y Limpieza -->
+            <div class="flex flex-wrap justify-between items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                <div class="flex gap-2">
+                    <button id="btn-copy" class="px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white font-medium rounded-lg text-sm transition">Copiar Texto</button>
+                    <button id="btn-clear" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg text-sm transition">Borrar Todo</button>
+                </div>
+                <div id="status-message" class="text-sm font-medium text-emerald-600 hidden"></div>
+            </div>
+        </div>
+
+        <!-- Banner AdSense Inferior -->
+        <div class="my-6 min-h-[90px] bg-gray-100 border border-dashed border-gray-300 rounded-lg flex items-center justify-center text-xs text-gray-400">
+            [Espacio reservado para Anuncio Google AdSense]
+        </div>
+
+        <!-- Sección Informativa / SEO -->
+        <section class="bg-white p-6 rounded-xl shadow-md border border-gray-200 text-gray-600 text-sm space-y-4">
+            <h3 class="text-lg font-bold text-gray-800">¿Para qué sirve el conversor de texto online?</h3>
+            <p>Esta herramienta gratuita te permite cambiar el formato de cualquier fragmento de texto al instante sin necesidad de usar programas de ofimática como Microsoft Word o Google Docs.</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li><strong>MAYÚSCULAS:</strong> Útil para destacar títulos, códigos o avisos importantes.</li>
+                <li><strong>minúsculas:</strong> Ideal si pegaste por error un texto completamente en mayúsculas.</li>
+                <li><strong>Tipo Título:</strong> Capitaliza la primera letra de cada palabra para nombres propios o encabezados.</li>
+                <li><strong>Quitar Espacios Extra:</strong> Elimina espacios dobles y saltos de línea repetidos limpiando tu texto en segundos.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-white border-t border-gray-200 py-6 mt-8">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500">
+            <p>&copy; 2026 HerramientasText. Todos los derechos reservados. Herramientas gratuitas online.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica de Javascript -->
+    <script>
+        const textInput = document.getElementById('text-input');
+        const btnUppercase = document.getElementById('btn-uppercase');
+        const btnLowercase = document.getElementById('btn-lowercase');
+        const btnTitlecase = document.getElementById('btn-titlecase');
+        const btnSentencecase = document.getElementById('btn-sentencecase');
+        const btnCleanSpaces = document.getElementById('btn-clean-spaces');
+        const btnCopy = document.getElementById('btn-copy');
+        const btnClear = document.getElementById('btn-clear');
+        const statusMessage = document.getElementById('status-message');
+
+        function showMessage(msg) {
+            statusMessage.textContent = msg;
+            statusMessage.classList.remove('hidden');
+            setTimeout(() => {
+                statusMessage.classList.add('hidden');
+            }, 2500);
+        }
+
+        // Convertir a MAYÚSCULAS
+        btnUppercase.addEventListener('click', () => {
+            textInput.value = textInput.value.toUpperCase();
+            showMessage('Convertido a MAYÚSCULAS');
+        });
+
+        // Convertir a minúsculas
+        btnLowercase.addEventListener('click', () => {
+            textInput.value = textInput.value.toLowerCase();
+            showMessage('Convertido a minúsculas');
+        });
+
+        // Convertir a Tipo Título
+        btnTitlecase.addEventListener('click', () => {
+            textInput.value = textInput.value.toLowerCase().replace(/(?:^|\s|-)\S/g, match => match.toUpperCase());
+            showMessage('Convertido a Tipo Título');
+        });
+
+        // Convertir a Tipo Frase
+        btnSentencecase.addEventListener('click', () => {
+            let text = textInput.value.toLowerCase();
+            textInput.value = text.replace(/(^\s*|[.!?]\s*)([a-z])/g, (match, separator, char) => separator + char.toUpperCase());
+            showMessage('Convertido a Tipo Frase');
+        });
+
+        // Quitar espacios extra y saltos dobles
+        btnCleanSpaces.addEventListener('click', () => {
+            textInput.value = textInput.value.replace(/[ \t]+/g, ' ').replace(/\n\s*\n/g, '\n').trim();
+            showMessage('Espacios y saltos innecesarios eliminados');
+        });
+
+        // Borrar todo
+        btnClear.addEventListener('click', () => {
+            textInput.value = '';
+            statusMessage.classList.add('hidden');
+        });
+
+        // Copiar al portapapeles
+        btnCopy.addEventListener('click', () => {
+            if (textInput.value.length === 0) return;
+            navigator.clipboard.writeText(textInput.value).then(() => {
+                showMessage('¡Texto copiado al portapapeles!');
+            });
+        });
+    </script>
+</body>
+</html>
