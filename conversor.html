@@ -5,7 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de Mayúsculas y Minúsculas Online | Limpiador de Texto</title>
     <meta name="description" content="Herramienta gratuita para cambiar texto a mayúsculas, minúsculas, Tipo Título, Tipo Frase y limpiar espacios dobles al instante.">
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="lKGxsDUtcG44NpnKA89nsxSk-9N3WX7y9hxPRAGXSvg" />
@@ -14,19 +27,25 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1742184952303724"
          crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex flex-col justify-between transition-colors duration-200">
 
     <!-- Navegación con Menú -->
-    <header class="bg-white shadow-sm border-b border-gray-200">
+    <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xl font-bold text-indigo-600">HerramientasText</a>
-                <span class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
+                <a href="index.html" class="text-xl font-bold text-indigo-600 dark:text-indigo-400">HerramientasText</a>
+                <span class="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
             </div>
-            <nav class="flex flex-wrap gap-4 text-sm font-medium">
-                <a href="index.html" class="text-gray-600 hover:text-indigo-600 transition">Contador de Palabras</a>
-                <a href="conversor.html" class="text-indigo-600 font-bold border-b-2 border-indigo-600 pb-1">Conversor de Texto</a>
-                <a href="detector-ia.html" class="text-gray-600 hover:text-indigo-600 transition">Detector de IA</a>
+            <nav class="flex flex-wrap items-center gap-4 text-sm font-medium">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contador de Palabras</a>
+                <a href="conversor.html" class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 pb-1">Conversor de Texto</a>
+                <a href="detector-ia.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Detector de IA</a>
+                
+                <!-- Botón Modo Oscuro -->
+                <button id="theme-toggle" class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm transition ml-2 border border-gray-200 dark:border-gray-600" title="Cambiar tema">
+                    <span id="theme-toggle-light-icon" class="hidden">☀️</span>
+                    <span id="theme-toggle-dark-icon" class="hidden">🌙</span>
+                </button>
             </nav>
         </div>
     </header>
@@ -34,20 +53,20 @@
     <!-- Contenido Principal -->
     <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Conversor y Limpiador de Texto</h2>
-            <p class="text-gray-600">Transforma tu texto a mayúsculas, minúsculas, formato título o limpia formatos con un solo clic.</p>
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Conversor y Limpiador de Texto</h2>
+            <p class="text-gray-600 dark:text-gray-400">Transforma tu texto a mayúsculas, minúsculas, formato título o limpia formatos con un solo clic.</p>
         </div>
 
         <!-- Banner AdSense Superior -->
-        <div class="my-6 min-h-[90px] bg-gray-100 border border-dashed border-gray-300 rounded-lg flex items-center justify-center text-xs text-gray-400">
+        <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
             [Espacio reservado para Anuncio Google AdSense]
         </div>
 
         <!-- Área de Texto -->
-        <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 mb-8">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 mb-8">
             <textarea 
                 id="text-input" 
-                class="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y text-gray-700 placeholder-gray-400 focus:outline-none transition" 
+                class="w-full h-64 p-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y text-gray-700 dark:text-gray-100 dark:bg-gray-900 placeholder-gray-400 focus:outline-none transition" 
                 placeholder="Escribe o pega tu texto aquí para convertirlo..."></textarea>
 
             <!-- Botones de Conversión -->
@@ -60,23 +79,23 @@
             </div>
 
             <!-- Botones de Utilidades de Copia y Limpieza -->
-            <div class="flex flex-wrap justify-between items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+            <div class="flex flex-wrap justify-between items-center gap-3 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
                 <div class="flex gap-2">
-                    <button id="btn-copy" class="px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white font-medium rounded-lg text-sm transition">Copiar Texto</button>
-                    <button id="btn-clear" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg text-sm transition">Borrar Todo</button>
+                    <button id="btn-copy" class="px-4 py-2 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white font-medium rounded-lg text-sm transition">Copiar Texto</button>
+                    <button id="btn-clear" class="px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium rounded-lg text-sm transition">Borrar Todo</button>
                 </div>
-                <div id="status-message" class="text-sm font-medium text-emerald-600 hidden"></div>
+                <div id="status-message" class="text-sm font-medium text-emerald-600 dark:text-emerald-400 hidden"></div>
             </div>
         </div>
 
         <!-- Banner AdSense Inferior -->
-        <div class="my-6 min-h-[90px] bg-gray-100 border border-dashed border-gray-300 rounded-lg flex items-center justify-center text-xs text-gray-400">
+        <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
             [Espacio reservado para Anuncio Google AdSense]
         </div>
 
         <!-- Sección Informativa / SEO -->
-        <section class="bg-white p-6 rounded-xl shadow-md border border-gray-200 text-gray-600 text-sm space-y-4">
-            <h3 class="text-lg font-bold text-gray-800">¿Para qué sirve el conversor de texto online?</h3>
+        <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm space-y-4">
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">¿Para qué sirve el conversor de texto online?</h3>
             <p>Esta herramienta gratuita te permite cambiar el formato de cualquier fragmento de texto al instante sin necesidad de usar programas de ofimática como Microsoft Word o Google Docs.</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><strong>MAYÚSCULAS:</strong> Útil para destacar títulos, códigos o avisos importantes.</li>
@@ -88,20 +107,45 @@
     </main>
 
     <!-- Pie de página -->
-    <footer class="bg-white border-t border-gray-200 py-6 mt-8">
-        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500 space-y-2">
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 mt-8">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500 dark:text-gray-400 space-y-2">
             <p>&copy; 2026 HerramientasText. Todos los derechos reservados. Herramientas gratuitas online.</p>
             <p>
                 <a href="index.html" class="hover:underline">Contador de Palabras</a> | 
                 <a href="conversor.html" class="hover:underline">Conversor de Texto</a> | 
                 <a href="detector-ia.html" class="hover:underline">Detector de IA</a> | 
-                <a href="privacidad.html" class="font-semibold text-gray-700 hover:underline">Política de Privacidad</a>
+                <a href="privacidad.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:underline">Política de Privacidad</a>
             </p>
         </div>
     </footer>
 
     <!-- Lógica de Javascript -->
     <script>
+        // Manejo del Modo Oscuro
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (document.documentElement.classList.contains('dark')) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Lógica de Conversión
         const textInput = document.getElementById('text-input');
         const btnUppercase = document.getElementById('btn-uppercase');
         const btnLowercase = document.getElementById('btn-lowercase');
@@ -120,44 +164,37 @@
             }, 2500);
         }
 
-        // Convertir a MAYÚSCULAS
         btnUppercase.addEventListener('click', () => {
             textInput.value = textInput.value.toUpperCase();
             showMessage('Convertido a MAYÚSCULAS');
         });
 
-        // Convertir a minúsculas
         btnLowercase.addEventListener('click', () => {
             textInput.value = textInput.value.toLowerCase();
             showMessage('Convertido a minúsculas');
         });
 
-        // Convertir a Tipo Título
         btnTitlecase.addEventListener('click', () => {
             textInput.value = textInput.value.toLowerCase().replace(/(?:^|\s|-)\S/g, match => match.toUpperCase());
             showMessage('Convertido a Tipo Título');
         });
 
-        // Convertir a Tipo Frase
         btnSentencecase.addEventListener('click', () => {
             let text = textInput.value.toLowerCase();
             textInput.value = text.replace(/(^\s*|[.!?]\s*)([a-z])/g, (match, separator, char) => separator + char.toUpperCase());
             showMessage('Convertido a Tipo Frase');
         });
 
-        // Quitar espacios extra y saltos dobles
         btnCleanSpaces.addEventListener('click', () => {
             textInput.value = textInput.value.replace(/[ \t]+/g, ' ').replace(/\n\s*\n/g, '\n').trim();
             showMessage('Espacios y saltos innecesarios eliminados');
         });
 
-        // Borrar todo
         btnClear.addEventListener('click', () => {
             textInput.value = '';
             statusMessage.classList.add('hidden');
         });
 
-        // Copiar al portapapeles
         btnCopy.addEventListener('click', () => {
             if (textInput.value.length === 0) return;
             navigator.clipboard.writeText(textInput.value).then(() => {

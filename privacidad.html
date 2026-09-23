@@ -5,7 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidad y Cookies | HerramientasText</title>
     <meta name="robots" content="noindex, follow">
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
 
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="lKGxsDUtcG44NpnKA89nsxSk-9N3WX7y9hxPRAGXSvg" />
@@ -14,59 +27,87 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1742184952303724"
          crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex flex-col justify-between transition-colors duration-200">
 
     <!-- Navegación -->
-    <header class="bg-white shadow-sm border-b border-gray-200">
+    <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <a href="index.html" class="text-xl font-bold text-indigo-600">HerramientasText</a>
-                <span class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
+                <a href="index.html" class="text-xl font-bold text-indigo-600 dark:text-indigo-400">HerramientasText</a>
+                <span class="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
             </div>
-            <nav class="flex flex-wrap gap-4 text-sm font-medium">
-                <a href="index.html" class="text-gray-600 hover:text-indigo-600 transition">Contador de Palabras</a>
-                <a href="conversor.html" class="text-gray-600 hover:text-indigo-600 transition">Conversor de Texto</a>
-                <a href="detector-ia.html" class="text-gray-600 hover:text-indigo-600 transition">Detector de IA</a>
+            <nav class="flex flex-wrap items-center gap-4 text-sm font-medium">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contador de Palabras</a>
+                <a href="conversor.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Conversor de Texto</a>
+                <a href="detector-ia.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Detector de IA</a>
+                
+                <!-- Botón Modo Oscuro -->
+                <button id="theme-toggle" class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm transition ml-2 border border-gray-200 dark:border-gray-600" title="Cambiar tema">
+                    <span id="theme-toggle-light-icon" class="hidden">☀️</span>
+                    <span id="theme-toggle-dark-icon" class="hidden">🌙</span>
+                </button>
             </nav>
         </div>
     </header>
 
     <!-- Contenido Legal -->
     <main class="max-w-3xl mx-auto px-4 py-10 flex-grow w-full">
-        <div class="bg-white p-8 rounded-xl shadow-md border border-gray-200 space-y-6 text-sm leading-relaxed text-gray-700">
-            <h1 class="text-2xl font-bold text-gray-900 border-b pb-3">Política de Privacidad y Aviso Legal</h1>
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 space-y-6 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-3">Política de Privacidad y Aviso Legal</h1>
             
             <p>En <strong>HerramientasText</strong>, accesible desde <code>https://contador-de-palabras-gray.vercel.app</code>, una de nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento contiene los tipos de información que son recopilados y registrados por nuestro sitio y cómo los utilizamos.</p>
 
-            <h2 class="text-lg font-semibold text-gray-900">1. Procesamiento de Texto y Datos</h2>
-            <p><strong>HerramientasText</strong> no almacena, guarda ni transmite a servidores externos el texto introducido por los usuarios en las herramientas de análisis o conversión. Todo el procesamiento de texto (conteo de palabras, cambio de mayúsculas/minúsculas, análisis léxico, etc.) se realiza de manera local e instantánea dentro del propio navegador del usuario.</p>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">1. Procesamiento de Texto y Datos</h2>
+            <p><strong>HerramientasText</strong> no almacena, guarda ni transmite a servidores externos el texto introducido por los usuarios en las herramientas de análisis o conversión. Todo el procesamiento de texto se realiza de manera local e instantánea dentro del propio navegador del usuario.</p>
 
-            <h2 class="text-lg font-semibold text-gray-900">2. Archivos de Registro (Log Files)</h2>
-            <p>HerramientasText sigue un procedimiento estándar de uso de archivos de registro. Estos archivos registran a los visitantes cuando visitan sitios web. La información recopilada incluye direcciones de protocolo de Internet (IP), tipo de navegador, proveedor de servicios de Internet (ISP), fecha y hora, páginas de referencia/salida y posiblemente el número de clics. Estos datos no están vinculados a ninguna información que sea personalmente identificable.</p>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">2. Archivos de Registro (Log Files)</h2>
+            <p>HerramientasText sigue un procedimiento estándar de uso de archivos de registro. Estos archivos registran a los visitantes cuando visitan sitios web. La información recopilada incluye direcciones IP, tipo de navegador, proveedor de servicios (ISP), fecha y hora, e información sobre el número de clics.</p>
 
-            <h2 class="text-lg font-semibold text-gray-900">3. Cookies de Google AdSense</h2>
-            <p>Google es uno de los proveedores externos en nuestro sitio. También utiliza cookies, conocidas como cookies de DART, para servir anuncios a los visitantes de nuestro sitio según su visita a este y otros sitios en Internet. Los usuarios pueden optar por rechazar el uso de cookies de DART visitando la Política de Privacidad de la red de anuncios y contenido de Google en la siguiente URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-indigo-600 underline">https://policies.google.com/technologies/ads</a>.</p>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">3. Cookies de Google AdSense</h2>
+            <p>Google es uno de los proveedores externos en nuestro sitio. Utiliza cookies, conocidas como cookies de DART, para servir anuncios a los visitantes de nuestro sitio según su visita a este y otros sitios en Internet. Los usuarios pueden optar por rechazar el uso de cookies de DART visitando la Política de Privacidad de Google: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 underline">https://policies.google.com/technologies/ads</a>.</p>
 
-            <h2 class="text-lg font-semibold text-gray-900">4. Políticas de Privacidad de Terceros</h2>
-            <p>La Política de Privacidad de HerramientasText no se aplica a otros anunciantes o sitios web. Por lo tanto, le aconsejamos que consulte las respectivas Políticas de Privacidad de estos servidores de anuncios de terceros para obtener información más detallada.</p>
-
-            <h2 class="text-lg font-semibold text-gray-900">5. Consentimiento</h2>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white">4. Consentimiento</h2>
             <p>Al utilizar nuestro sitio web, usted acepta nuestra Política de Privacidad y está de acuerdo con sus términos.</p>
         </div>
     </main>
 
     <!-- Pie de página -->
-    <footer class="bg-white border-t border-gray-200 py-6 mt-8">
-        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500 space-y-2">
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 mt-8">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500 dark:text-gray-400 space-y-2">
             <p>&copy; 2026 HerramientasText. Todos los derechos reservados. Herramientas gratuitas online.</p>
             <p>
                 <a href="index.html" class="hover:underline">Contador de Palabras</a> | 
                 <a href="conversor.html" class="hover:underline">Conversor de Texto</a> | 
                 <a href="detector-ia.html" class="hover:underline">Detector de IA</a> | 
-                <a href="privacidad.html" class="font-semibold text-gray-700 hover:underline">Política de Privacidad</a>
+                <a href="privacidad.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:underline">Política de Privacidad</a>
             </p>
         </div>
     </footer>
 
+    <!-- Lógica de Javascript -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (document.documentElement.classList.contains('dark')) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
