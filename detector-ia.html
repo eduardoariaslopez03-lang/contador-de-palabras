@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detector y Analizador de Texto IA Gratis | HerramientasText</title>
-    <meta name="description" content="Analiza si tu texto presenta patrones típicos de inteligencia artificial (ChatGPT) o estilo humano. Herramienta gratuita de análisis sintáctico y léxico.">
+    <title>Detector de Texto IA Gratis | HerramientasText</title>
+    <meta name="description" content="Analiza patrones lingüísticos en tu texto para estimar si ha sido generado por Inteligencia Artificial (ChatGPT, Claude) o escrito por un humano.">
     
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -29,7 +29,7 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex flex-col justify-between transition-colors duration-200">
 
-    <!-- Navegación con Menú -->
+    <!-- Navegación -->
     <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
@@ -37,9 +37,10 @@
                 <span class="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
             </div>
             <nav class="flex flex-wrap items-center gap-4 text-sm font-medium">
-                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contador de Palabras</a>
-                <a href="conversor.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Conversor de Texto</a>
-                <a href="detector-ia.html" class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 pb-1">Detector de IA</a>
+                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contador</a>
+                <a href="conversor.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Conversor</a>
+                <a href="detector-ia.html" class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 pb-1">Detector IA</a>
+                <a href="lorem-ipsum.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Lorem Ipsum</a>
                 
                 <!-- Botón Modo Oscuro -->
                 <button id="theme-toggle" class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm transition ml-2 border border-gray-200 dark:border-gray-600" title="Cambiar tema">
@@ -53,88 +54,59 @@
     <!-- Contenido Principal -->
     <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Analizador de Patrones de Texto e IA</h2>
-            <p class="text-gray-600 dark:text-gray-400">Evalúa la probabilidad de patrones de inteligencia artificial vs. redacción humana mediante análisis léxico y sintáctico.</p>
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Detector de Texto de Inteligencia Artificial</h2>
+            <p class="text-gray-600 dark:text-gray-400">Comprueba la probabilidad de que un texto haya sido redactado por una IA.</p>
         </div>
 
-        <!-- Banner AdSense Superior -->
+        <!-- Anuncio AdSense Superior -->
         <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
             [Espacio reservado para Anuncio Google AdSense]
         </div>
 
         <!-- Área de Texto -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 mb-8">
-            <textarea 
-                id="text-input" 
-                class="w-full h-64 p-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y text-gray-700 dark:text-gray-100 dark:bg-gray-900 placeholder-gray-400 focus:outline-none transition" 
-                placeholder="Pega aquí el texto que deseas analizar (mínimo 30 palabras recomendadas para mayor precisión)..."></textarea>
-
-            <div class="flex flex-wrap justify-between items-center gap-3 mt-4">
-                <div class="flex gap-2">
-                    <button id="btn-analyze" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">Analizar Texto</button>
-                    <button id="btn-clear" class="px-4 py-2.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium rounded-lg text-sm transition">Limpiar</button>
-                </div>
-                <span id="char-warning" class="text-xs text-amber-600 dark:text-amber-400 hidden">Se recomiendan al menos 150 caracteres para un análisis fiable.</span>
+        <div class="mb-6">
+            <textarea id="text-input" class="w-full h-56 p-4 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-gray-100 resize-y shadow-sm text-base outline-none transition" placeholder="Pega el texto a analizar (mínimo 30 palabras para mayor precisión)..."></textarea>
+            <div class="flex justify-between items-center mt-2 text-xs text-gray-500 dark:text-gray-400">
+                <span id="word-count-info">0 palabras</span>
+                <button id="btn-clear" class="hover:text-red-500 transition cursor-pointer">Limpiar texto</button>
             </div>
         </div>
 
-        <!-- Resultados del Análisis (Oculto por defecto) -->
-        <div id="results-panel" class="hidden space-y-6 mb-8">
-            <!-- Barra de Probabilidad -->
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Resultado del Análisis de Estilo</h3>
-                
-                <div class="space-y-2 mb-4">
-                    <div class="flex justify-between text-sm font-semibold">
-                        <span class="text-emerald-600 dark:text-emerald-400">Estilo Humano: <span id="human-score">0%</span></span>
-                        <span class="text-purple-600 dark:text-purple-400">Patrón IA: <span id="ai-score">0%</span></span>
+        <!-- Botón Analizar -->
+        <div class="flex justify-center mb-8">
+            <button id="btn-analyze" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md text-sm transition">Analizar Texto</button>
+        </div>
+
+        <!-- Resultados -->
+        <div id="result-box" class="hidden bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-md mb-8">
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4 text-center">Resultado del Análisis</h3>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-around gap-6">
+                <!-- Porcentaje IA -->
+                <div class="text-center">
+                    <span id="ai-percentage" class="text-5xl font-extrabold text-indigo-600 dark:text-indigo-400">0%</span>
+                    <span class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mt-1">Probabilidad de IA</span>
+                </div>
+
+                <!-- Barra de Progreso -->
+                <div class="w-full sm:w-1/2">
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+                        <div id="progress-bar" class="bg-indigo-600 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
                     </div>
-                    <div class="w-full bg-gray-200 dark:bg-gray-700 h-4 rounded-full overflow-hidden flex">
-                        <div id="bar-human" class="bg-emerald-500 h-full transition-all duration-700" style="width: 50%"></div>
-                        <div id="bar-ai" class="bg-purple-600 h-full transition-all duration-700" style="width: 50%"></div>
-                    </div>
+                    <p id="analysis-summary" class="text-xs text-center mt-3 text-gray-600 dark:text-gray-300 font-medium"></p>
                 </div>
-
-                <p id="verdict-text" class="text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-900/50 p-3 rounded-lg border border-gray-200 dark:border-gray-700"></p>
-            </div>
-
-            <!-- Métricas Detalladas -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                    <span id="metric-ttr" class="block text-2xl font-bold text-indigo-600 dark:text-indigo-400">0%</span>
-                    <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Variedad de Vocabulario</span>
-                </div>
-                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                    <span id="metric-burstiness" class="block text-2xl font-bold text-indigo-600 dark:text-indigo-400">Baja</span>
-                    <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Variación de Oraciones</span>
-                </div>
-                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 text-center">
-                    <span id="metric-phrases" class="block text-2xl font-bold text-indigo-600 dark:text-indigo-400">0</span>
-                    <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Muletillas Típicas IA</span>
-                </div>
-            </div>
-
-            <!-- Detección de Muletillas -->
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
-                <h4 class="text-md font-bold text-gray-900 dark:text-white mb-2">Conectores y Expresiones Frecuentes de IA Detectados</h4>
-                <div id="detected-tags" class="flex flex-wrap gap-2 text-xs"></div>
             </div>
         </div>
 
-        <!-- Banner AdSense Inferior -->
+        <!-- Anuncio AdSense Inferior -->
         <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
             [Espacio reservado para Anuncio Google AdSense]
         </div>
 
-        <!-- Explicación Técnica / SEO -->
+        <!-- Sección Informativa / SEO -->
         <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm space-y-4">
-            <h3 class="text-lg font-bold text-gray-800 dark:text-white">¿Cómo funciona este analizador de texto?</h3>
-            <p>A diferencia de herramientas opacas, nuestro algoritmo evalúa indicadores lingüísticos objetivos:</p>
-            <ul class="list-disc pl-5 space-y-1">
-                <li><strong>Diversidad Léxica (TTR):</strong> Mide la cantidad de palabras únicas. La IA tiende a reutilizar un conjunto más homogéneo de vocabulario.</li>
-                <li><strong>Variación de Oraciones (Burstiness):</strong> Los humanos alternamos frases muy cortas con frases complejas. La IA suele generar oraciones de longitud muy uniforme.</li>
-                <li><strong>Marcadores Discursivos:</strong> Detecta conectores rígidos que los modelos de lenguaje sobreutilizan en español (como <em>"en conclusión"</em>, <em>"es fundamental destacar"</em> o <em>"por lo tanto"</em>).</li>
-            </ul>
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">¿Cómo funciona esta detección?</h3>
+            <p>Este algoritmo evalúa patrones de coherencia lingüística, complejidad léxica y repetición de conectores formales habitualmente producidos por modelos de lenguaje masivos como ChatGPT o Claude.</p>
         </section>
     </main>
 
@@ -146,14 +118,15 @@
                 <a href="index.html" class="hover:underline">Contador</a> | 
                 <a href="conversor.html" class="hover:underline">Conversor</a> | 
                 <a href="detector-ia.html" class="hover:underline">Detector IA</a> | 
+                <a href="lorem-ipsum.html" class="hover:underline">Lorem Ipsum</a> | 
                 <a href="privacidad.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:underline">Política de Privacidad</a>
             </p>
         </div>
     </footer>
 
-    <!-- Lógica de Análisis JS -->
+    <!-- Lógica JS -->
     <script>
-        // Manejo del Modo Oscuro
+        // Modo Oscuro Toggle
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -177,116 +150,89 @@
             }
         });
 
-        // Lógica de Análisis de IA
+        // Detector JS
         const textInput = document.getElementById('text-input');
-        const btnAnalyze = document.getElementById('btn-analyze');
+        const wordCountInfo = document.getElementById('word-count-info');
         const btnClear = document.getElementById('btn-clear');
-        const resultsPanel = document.getElementById('results-panel');
-        const charWarning = document.getElementById('char-warning');
+        const btnAnalyze = document.getElementById('btn-analyze');
+        const resultBox = document.getElementById('result-box');
+        const aiPercentage = document.getElementById('ai-percentage');
+        const progressBar = document.getElementById('progress-bar');
+        const analysisSummary = document.getElementById('analysis-summary');
 
-        const humanScoreEl = document.getElementById('human-score');
-        const aiScoreEl = document.getElementById('ai-score');
-        const barHuman = document.getElementById('bar-human');
-        const barAi = document.getElementById('bar-ai');
-        const verdictText = document.getElementById('verdict-text');
-
-        const metricTtr = document.getElementById('metric-ttr');
-        const metricBurstiness = document.getElementById('metric-burstiness');
-        const metricPhrases = document.getElementById('metric-phrases');
-        const detectedTags = document.getElementById('detected-tags');
-
-        const aiPhrasesList = [
-            "en resumen", "en conclusión", "es fundamental destacar", "cabe destacar", 
-            "por lo tanto", "por consiguiente", "en este sentido", "es importante mencionar", 
-            "además de esto", "a modo de conclusión", "en última instancia", "hoy en día", 
-            "un papel crucial", "desempeña un papel", "es clave para", "sin embargo"
+        // Palabras / Frases clave asociadas a IA
+        const aiKeywords = [
+            "en resumen", "por lo tanto", "es fundamental", "en conclusión", "cabe destacar",
+            "en primer lugar", "además", "sin embargo", "en este sentido", "es importante señalar",
+            "por un lado", "por otro lado", "en última instancia", "de manera eficiente",
+            "un papel crucial", "a continuación", "en el mundo actual", "ofrece una"
         ];
 
-        btnAnalyze.addEventListener('click', analyzeText);
+        textInput.addEventListener('input', () => {
+            const words = textInput.value.trim().split(/\s+/).filter(item => item.length > 0);
+            wordCountInfo.textContent = `${words.length} palabras`;
+        });
 
         btnClear.addEventListener('click', () => {
             textInput.value = '';
-            resultsPanel.classList.add('hidden');
-            charWarning.classList.add('hidden');
+            wordCountInfo.textContent = '0 palabras';
+            resultBox.classList.add('hidden');
         });
 
-        function analyzeText() {
-            const text = textInput.value.trim();
+        btnAnalyze.addEventListener('click', () => {
+            const text = textInput.value.toLowerCase().trim();
+            const words = text.split(/\s+/).filter(item => item.length > 0);
 
-            if (text.length < 50) {
-                charWarning.classList.remove('hidden');
+            if (words.length < 10) {
+                alert("Por favor, introduce al menos 10 palabras para obtener un análisis.");
                 return;
             }
-            charWarning.classList.add('hidden');
 
-            const words = text.toLowerCase().match(/\b[a-záéíóúñ]+\b/gi) || [];
-            if (words.length < 10) return;
-
-            const uniqueWords = new Set(words);
-            const ttr = (uniqueWords.size / words.length) * 100;
-
-            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
-            const sentenceLengths = sentences.map(s => s.trim().split(/\s+/).length);
+            let score = 15; // Puntuación base
             
-            let avgLength = sentenceLengths.reduce((a, b) => a + b, 0) / sentenceLengths.length;
-            let variance = sentenceLengths.reduce((a, b) => a + Math.pow(b - avgLength, 2), 0) / sentenceLengths.length;
-            let stdDev = Math.sqrt(variance);
-
-            let foundPhrases = [];
-            let lowerText = text.toLowerCase();
-            aiPhrasesList.forEach(phrase => {
-                if (lowerText.includes(phrase)) {
-                    foundPhrases.push(phrase);
-                }
+            // Evaluar conectores
+            let matches = 0;
+            aiKeywords.forEach(kw => {
+                if (text.includes(kw)) matches++;
             });
 
-            let aiPoints = 0;
+            score += matches * 12;
 
-            if (ttr < 50) aiPoints += 30;
-            else if (ttr < 65) aiPoints += 15;
-
-            if (stdDev < 3) aiPoints += 35;
-            else if (stdDev < 5) aiPoints += 15;
-
-            aiPoints += Math.min(foundPhrases.length * 12, 35);
-
-            let aiScore = Math.min(Math.max(Math.round(aiPoints), 5), 95);
-            let humanScore = 100 - aiScore;
-
-            humanScoreEl.textContent = `${humanScore}%`;
-            aiScoreEl.textContent = `${aiScore}%`;
-            barHuman.style.width = `${humanScore}%`;
-            barAi.style.width = `${aiScore}%`;
-
-            metricTtr.textContent = `${Math.round(ttr)}%`;
-            metricBurstiness.textContent = stdDev > 5 ? "Alta (Humana)" : "Baja (IA)";
-            metricPhrases.textContent = foundPhrases.length;
-
-            if (aiScore > 65) {
-                verdictText.textContent = "El texto muestra alta uniformidad sintáctica y patrones típicos de generación automatizada (IA).";
-                verdictText.className = "text-sm font-medium text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/50 p-3 rounded-lg border border-purple-200 dark:border-purple-800";
-            } else if (aiScore > 35) {
-                verdictText.textContent = "El texto combina estructuras uniformes con elementos variados. Podría ser un texto mixto o un borrador humano editado.";
-                verdictText.className = "text-sm font-medium text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/50 p-3 rounded-lg border border-amber-200 dark:border-amber-800";
-            } else {
-                verdictText.textContent = "El texto presenta alta variabilidad sintáctica y léxica, características típicas de la redacción humana espontánea.";
-                verdictText.className = "text-sm font-medium text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 p-3 rounded-lg border border-emerald-200 dark:border-emerald-800";
+            // Variabilidad de longitud de frases (Burstiness)
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            if (sentences.length > 2) {
+                const lengths = sentences.map(s => s.trim().split(/\s+/).length);
+                const avg = lengths.reduce((a, b) => a + b, 0) / lengths.length;
+                const variance = lengths.reduce((a, b) => a + Math.pow(b - avg, 2), 0) / lengths.length;
+                
+                // Las IAs tienden a tener oraciones muy homogéneas (poca varianza)
+                if (variance < 10) score += 20;
             }
 
-            detectedTags.innerHTML = '';
-            if (foundPhrases.length === 0) {
-                detectedTags.innerHTML = '<span class="text-gray-400 dark:text-gray-500 italic">No se han detectado muletillas características de IA.</span>';
+            // Limitar puntuación final
+            if (score > 95) score = 95;
+            if (score < 5) score = 5;
+
+            // Renderizar resultados
+            aiPercentage.textContent = `${score}%`;
+            progressBar.style.width = `${score}%`;
+
+            if (score > 60) {
+                analysisSummary.textContent = "Alta probabilidad de haber sido generado total o parcialmente por una IA.";
+                progressBar.className = "bg-red-500 h-4 rounded-full transition-all duration-500";
+                aiPercentage.className = "text-5xl font-extrabold text-red-500";
+            } else if (score > 35) {
+                analysisSummary.textContent = "El texto muestra una mezcla de patrones humanos y estructurales de IA.";
+                progressBar.className = "bg-amber-500 h-4 rounded-full transition-all duration-500";
+                aiPercentage.className = "text-5xl font-extrabold text-amber-500";
             } else {
-                foundPhrases.forEach(p => {
-                    const tag = document.createElement('span');
-                    tag.className = "px-2.5 py-1 bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 font-semibold rounded-full";
-                    tag.textContent = `"${p}"`;
-                    detectedTags.appendChild(tag);
-                });
+                analysisSummary.textContent = "Alta probabilidad de haber sido escrito por un ser humano.";
+                progressBar.className = "bg-emerald-500 h-4 rounded-full transition-all duration-500";
+                aiPercentage.className = "text-5xl font-extrabold text-emerald-500";
             }
 
-            resultsPanel.classList.remove('hidden');
-        }
+            resultBox.classList.remove('hidden');
+        });
     </script>
 </body>
 </html>

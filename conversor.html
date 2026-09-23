@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Mayúsculas y Minúsculas Online | Limpiador de Texto</title>
-    <meta name="description" content="Herramienta gratuita para cambiar texto a mayúsculas, minúsculas, Tipo Título, Tipo Frase y limpiar espacios dobles al instante.">
+    <title>Conversor de Mayúsculas y Minúsculas | HerramientasText</title>
+    <meta name="description" content="Convierte texto a mayúsculas, minúsculas, Tipo Título o Tipo Frase al instante. Herramienta online gratuita.">
     
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -29,7 +29,7 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex flex-col justify-between transition-colors duration-200">
 
-    <!-- Navegación con Menú -->
+    <!-- Navegación -->
     <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
@@ -37,9 +37,10 @@
                 <span class="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
             </div>
             <nav class="flex flex-wrap items-center gap-4 text-sm font-medium">
-                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contador de Palabras</a>
-                <a href="conversor.html" class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 pb-1">Conversor de Texto</a>
-                <a href="detector-ia.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Detector de IA</a>
+                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contador</a>
+                <a href="conversor.html" class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 pb-1">Conversor</a>
+                <a href="detector-ia.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Detector IA</a>
+                <a href="lorem-ipsum.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Lorem Ipsum</a>
                 
                 <!-- Botón Modo Oscuro -->
                 <button id="theme-toggle" class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm transition ml-2 border border-gray-200 dark:border-gray-600" title="Cambiar tema">
@@ -53,55 +54,49 @@
     <!-- Contenido Principal -->
     <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Conversor y Limpiador de Texto</h2>
-            <p class="text-gray-600 dark:text-gray-400">Transforma tu texto a mayúsculas, minúsculas, formato título o limpia formatos con un solo clic.</p>
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Conversor de Mayúsculas y Minúsculas</h2>
+            <p class="text-gray-600 dark:text-gray-400">Transforma el formato de tus textos al instante con un solo clic.</p>
         </div>
 
-        <!-- Banner AdSense Superior -->
+        <!-- Anuncio AdSense Superior -->
         <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
             [Espacio reservado para Anuncio Google AdSense]
         </div>
 
         <!-- Área de Texto -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 mb-8">
-            <textarea 
-                id="text-input" 
-                class="w-full h-64 p-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y text-gray-700 dark:text-gray-100 dark:bg-gray-900 placeholder-gray-400 focus:outline-none transition" 
-                placeholder="Escribe o pega tu texto aquí para convertirlo..."></textarea>
-
-            <!-- Botones de Conversión -->
-            <div class="flex flex-wrap gap-2 mt-4">
-                <button id="btn-uppercase" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">MAYÚSCULAS</button>
-                <button id="btn-lowercase" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">minúsculas</button>
-                <button id="btn-titlecase" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">Tipo Título</button>
-                <button id="btn-sentencecase" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">Tipo Frase</button>
-                <button id="btn-clean-spaces" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg text-xs sm:text-sm transition">Quitar Espacios Extra</button>
-            </div>
-
-            <!-- Botones de Utilidades de Copia y Limpieza -->
-            <div class="flex flex-wrap justify-between items-center gap-3 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-                <div class="flex gap-2">
-                    <button id="btn-copy" class="px-4 py-2 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white font-medium rounded-lg text-sm transition">Copiar Texto</button>
-                    <button id="btn-clear" class="px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium rounded-lg text-sm transition">Borrar Todo</button>
-                </div>
-                <div id="status-message" class="text-sm font-medium text-emerald-600 dark:text-emerald-400 hidden"></div>
+        <div class="mb-6">
+            <textarea id="text-input" class="w-full h-64 p-4 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-gray-100 resize-y shadow-sm text-base outline-none transition" placeholder="Escribe o pega tu texto aquí..."></textarea>
+            <div class="flex justify-between items-center mt-2 text-xs text-gray-500 dark:text-gray-400">
+                <span id="copy-status" class="text-emerald-600 dark:text-emerald-400 font-medium hidden">¡Copiado al portapapeles!</span>
+                <button id="btn-clear" class="hover:text-red-500 transition cursor-pointer ml-auto">Limpiar texto</button>
             </div>
         </div>
 
-        <!-- Banner AdSense Inferior -->
+        <!-- Botones de Acción -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+            <button id="btn-uppercase" class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">MAYÚSCULAS</button>
+            <button id="btn-lowercase" class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">minúsculas</button>
+            <button id="btn-titlecase" class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">Tipo Título</button>
+            <button id="btn-sentencecase" class="px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">Tipo frase</button>
+        </div>
+
+        <div class="flex justify-center mb-8">
+            <button id="btn-copy" class="w-full sm:w-auto px-8 py-3 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white font-semibold rounded-lg shadow-md text-sm transition">Copiar Texto</button>
+        </div>
+
+        <!-- Anuncio AdSense Inferior -->
         <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
             [Espacio reservado para Anuncio Google AdSense]
         </div>
 
         <!-- Sección Informativa / SEO -->
         <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm space-y-4">
-            <h3 class="text-lg font-bold text-gray-800 dark:text-white">¿Para qué sirve el conversor de texto online?</h3>
-            <p>Esta herramienta gratuita te permite cambiar el formato de cualquier fragmento de texto al instante sin necesidad de usar programas de ofimática como Microsoft Word o Google Docs.</p>
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Formatos de texto disponibles</h3>
             <ul class="list-disc pl-5 space-y-1">
-                <li><strong>MAYÚSCULAS:</strong> Útil para destacar títulos, códigos o avisos importantes.</li>
-                <li><strong>minúsculas:</strong> Ideal si pegaste por error un texto completamente en mayúsculas.</li>
-                <li><strong>Tipo Título:</strong> Capitaliza la primera letra de cada palabra para nombres propios o encabezados.</li>
-                <li><strong>Quitar Espacios Extra:</strong> Elimina espacios dobles y saltos de línea repetidos limpiando tu texto en segundos.</li>
+                <li><strong>MAYÚSCULAS:</strong> Convierte todas las letras del texto a formato mayúsculo.</li>
+                <li><strong>minúsculas:</strong> Pasa todo el contenido a letras minúsculas.</li>
+                <li><strong>Tipo Título:</strong> Pone en mayúscula la primera letra de cada palabra.</li>
+                <li><strong>Tipo Frase:</strong> Pone en mayúscula únicamente la primera letra tras cada punto.</li>
             </ul>
         </section>
     </main>
@@ -111,17 +106,18 @@
         <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500 dark:text-gray-400 space-y-2">
             <p>&copy; 2026 HerramientasText. Todos los derechos reservados. Herramientas gratuitas online.</p>
             <p>
-                <a href="index.html" class="hover:underline">Contador de Palabras</a> | 
-                <a href="conversor.html" class="hover:underline">Conversor de Texto</a> | 
-                <a href="detector-ia.html" class="hover:underline">Detector de IA</a> | 
+                <a href="index.html" class="hover:underline">Contador</a> | 
+                <a href="conversor.html" class="hover:underline">Conversor</a> | 
+                <a href="detector-ia.html" class="hover:underline">Detector IA</a> | 
+                <a href="lorem-ipsum.html" class="hover:underline">Lorem Ipsum</a> | 
                 <a href="privacidad.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:underline">Política de Privacidad</a>
             </p>
         </div>
     </footer>
 
-    <!-- Lógica de Javascript -->
+    <!-- Lógica JS -->
     <script>
-        // Manejo del Modo Oscuro
+        // Modo Oscuro Toggle
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -145,60 +141,42 @@
             }
         });
 
-        // Lógica de Conversión
+        // Conversor JS
         const textInput = document.getElementById('text-input');
-        const btnUppercase = document.getElementById('btn-uppercase');
-        const btnLowercase = document.getElementById('btn-lowercase');
-        const btnTitlecase = document.getElementById('btn-titlecase');
-        const btnSentencecase = document.getElementById('btn-sentencecase');
-        const btnCleanSpaces = document.getElementById('btn-clean-spaces');
-        const btnCopy = document.getElementById('btn-copy');
         const btnClear = document.getElementById('btn-clear');
-        const statusMessage = document.getElementById('status-message');
+        const btnCopy = document.getElementById('btn-copy');
+        const copyStatus = document.getElementById('copy-status');
 
-        function showMessage(msg) {
-            statusMessage.textContent = msg;
-            statusMessage.classList.remove('hidden');
-            setTimeout(() => {
-                statusMessage.classList.add('hidden');
-            }, 2500);
-        }
-
-        btnUppercase.addEventListener('click', () => {
+        document.getElementById('btn-uppercase').addEventListener('click', () => {
             textInput.value = textInput.value.toUpperCase();
-            showMessage('Convertido a MAYÚSCULAS');
         });
 
-        btnLowercase.addEventListener('click', () => {
+        document.getElementById('btn-lowercase').addEventListener('click', () => {
             textInput.value = textInput.value.toLowerCase();
-            showMessage('Convertido a minúsculas');
         });
 
-        btnTitlecase.addEventListener('click', () => {
-            textInput.value = textInput.value.toLowerCase().replace(/(?:^|\s|-)\S/g, match => match.toUpperCase());
-            showMessage('Convertido a Tipo Título');
+        document.getElementById('btn-titlecase').addEventListener('click', () => {
+            textInput.value = textInput.value.toLowerCase().replace(/(?:^|\s|-)\S/g, function(a) { return a.toUpperCase(); });
         });
 
-        btnSentencecase.addEventListener('click', () => {
+        document.getElementById('btn-sentencecase').addEventListener('click', () => {
             let text = textInput.value.toLowerCase();
-            textInput.value = text.replace(/(^\s*|[.!?]\s*)([a-z])/g, (match, separator, char) => separator + char.toUpperCase());
-            showMessage('Convertido a Tipo Frase');
-        });
-
-        btnCleanSpaces.addEventListener('click', () => {
-            textInput.value = textInput.value.replace(/[ \t]+/g, ' ').replace(/\n\s*\n/g, '\n').trim();
-            showMessage('Espacios y saltos innecesarios eliminados');
+            textInput.value = text.replace(/(^\s*|[.!?]\s+)([a-zñáéíóú])/g, function(m, p1, p2) {
+                return p1 + p2.toUpperCase();
+            });
         });
 
         btnClear.addEventListener('click', () => {
             textInput.value = '';
-            statusMessage.classList.add('hidden');
         });
 
         btnCopy.addEventListener('click', () => {
-            if (textInput.value.length === 0) return;
+            if (!textInput.value.trim()) return;
             navigator.clipboard.writeText(textInput.value).then(() => {
-                showMessage('¡Texto copiado al portapapeles!');
+                copyStatus.classList.remove('hidden');
+                setTimeout(() => {
+                    copyStatus.classList.add('hidden');
+                }, 2000);
             });
         });
     </script>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Lorem Ipsum Gratis | HerramientasText</title>
+    <meta name="description" content="Genera texto de relleno Lorem Ipsum en párrafos, palabras o listas de forma instantánea para tus diseños web y proyectos editoriales.">
+    
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="lKGxsDUtcG44NpnKA89nsxSk-9N3WX7y9hxPRAGXSvg" />
+
+    <!-- Google AdSense Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1742184952303724"
+         crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex flex-col justify-between transition-colors duration-200">
+
+    <!-- Navegación con Menú -->
+    <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="text-xl font-bold text-indigo-600 dark:text-indigo-400">HerramientasText</a>
+                <span class="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
+            </div>
+            <nav class="flex flex-wrap items-center gap-4 text-sm font-medium">
+                <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Contador</a>
+                <a href="conversor.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Conversor</a>
+                <a href="detector-ia.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Detector IA</a>
+                <a href="lorem-ipsum.html" class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 pb-1">Lorem Ipsum</a>
+                
+                <!-- Botón Modo Oscuro -->
+                <button id="theme-toggle" class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm transition ml-2 border border-gray-200 dark:border-gray-600" title="Cambiar tema">
+                    <span id="theme-toggle-light-icon" class="hidden">☀️</span>
+                    <span id="theme-toggle-dark-icon" class="hidden">🌙</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Generador de Lorem Ipsum</h2>
+            <p class="text-gray-600 dark:text-gray-400">Crea texto de relleno para maquetación de proyectos web y diseños impresos.</p>
+        </div>
+
+        <!-- Banner AdSense Superior -->
+        <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
+            [Espacio reservado para Anuncio Google AdSense]
+        </div>
+
+        <!-- Opciones de Generación -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <!-- Cantidad -->
+                <div>
+                    <label for="quantity" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Cantidad</label>
+                    <input type="number" id="quantity" value="3" min="1" max="50" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+
+                <!-- Tipo -->
+                <div>
+                    <label for="type" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Tipo de elemento</label>
+                    <select id="type" class="w-full p-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 outline-none">
+                        <option value="paragraphs">Párrafos</option>
+                        <option value="words">Palabras</option>
+                        <option value="lists">Elementos de Lista</option>
+                    </select>
+                </div>
+
+                <!-- Iniciar con Lorem Ipsum -->
+                <div class="flex items-center sm:pt-6">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="start-with-lorem" checked class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                        <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">Empezar con "Lorem ipsum..."</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Botón Generar -->
+            <button id="btn-generate" class="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm text-sm transition">Generar Texto</button>
+        </div>
+
+        <!-- Resultado -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 mb-8">
+            <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-100 dark:border-gray-700">
+                <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Texto Generado</span>
+                <div class="flex items-center gap-3">
+                    <span id="copy-status" class="text-xs text-emerald-600 dark:text-emerald-400 font-medium hidden">¡Copiado!</span>
+                    <button id="btn-copy" class="px-4 py-1.5 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white font-medium rounded-lg text-xs transition">Copiar Resultado</button>
+                </div>
+            </div>
+
+            <div id="output-text" class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-200 text-sm leading-relaxed space-y-4">
+                <!-- Aquí se inyecta el texto generado -->
+            </div>
+        </div>
+
+        <!-- Banner AdSense Inferior -->
+        <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
+            [Espacio reservado para Anuncio Google AdSense]
+        </div>
+
+        <!-- Sección Informativa / SEO -->
+        <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm space-y-4">
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">¿Qué es el texto Lorem Ipsum y para qué se utiliza?</h3>
+            <p><strong>Lorem Ipsum</strong> es el texto de relleno estándar utilizado en la industria tipográfica, gráfica y de diseño web desde el siglo XVI. Su principal objetivo es rellenar espacios visuales en bocetos para centrar la atención en la maquetación y estructura visual, en lugar de distraer al lector con el contenido de los textos.</p>
+            <p>A diferencia de escribir <em>"Texto aquí, texto aquí"</em>, el pasaje de Lorem Ipsum ofrece una distribución de letras muy natural similar al español o inglés estándar.</p>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 mt-8">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500 dark:text-gray-400 space-y-2">
+            <p>&copy; 2026 HerramientasText. Todos los derechos reservados. Herramientas gratuitas online.</p>
+            <p>
+                <a href="index.html" class="hover:underline">Contador</a> | 
+                <a href="conversor.html" class="hover:underline">Conversor</a> | 
+                <a href="detector-ia.html" class="hover:underline">Detector IA</a> | 
+                <a href="lorem-ipsum.html" class="hover:underline">Lorem Ipsum</a> | 
+                <a href="privacidad.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:underline">Política de Privacidad</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        // Manejo del Modo Oscuro
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (document.documentElement.classList.contains('dark')) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Banco de Palabras Lorem Ipsum
+        const loremWords = [
+            "lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit", "sed", "do",
+            "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna", "aliqua", "ut",
+            "enim", "ad", "minim", "veniam", "quis", "nostrud", "exercitation", "ullamco", "laboris", "nisi",
+            "ut", "aliquip", "ex", "ea", "commodo", "consequat", "duis", "aute", "irure", "dolor",
+            "in", "reprehenderit", "in", "voluptate", "velit", "esse", "cillum", "dolore", "eu", "fugiat",
+            "nulla", "pariatur", "excepteur", "sint", "occaecat", "cupidatat", "non", "proident", "sunt", "in",
+            "culpa", "qui", "officia", "deserunt", "mollit", "anim", "id", "est", "laborum"
+        ];
+
+        const quantityInput = document.getElementById('quantity');
+        const typeSelect = document.getElementById('type');
+        const startWithLoremCheck = document.getElementById('start-with-lorem');
+        const btnGenerate = document.getElementById('btn-generate');
+        const outputText = document.getElementById('output-text');
+        const btnCopy = document.getElementById('btn-copy');
+        const copyStatus = document.getElementById('copy-status');
+
+        function getRandomWord() {
+            return loremWords[Math.floor(Math.random() * loremWords.length)];
+        }
+
+        function generateSentence(minWords = 8, maxWords = 15) {
+            const count = Math.floor(Math.random() * (maxWords - minWords + 1)) + minWords;
+            let sentence = [];
+            for (let i = 0; i < count; i++) {
+                sentence.push(getRandomWord());
+            }
+            let str = sentence.join(' ');
+            return str.charAt(0).toUpperCase() + str.slice(1) + '.';
+        }
+
+        function generateParagraph(minSentences = 4, maxSentences = 7) {
+            const count = Math.floor(Math.random() * (maxSentences - minSentences + 1)) + minSentences;
+            let sentences = [];
+            for (let i = 0; i < count; i++) {
+                sentences.push(generateSentence());
+            }
+            return sentences.join(' ');
+        }
+
+        function generateLorem() {
+            const qty = parseInt(quantityInput.value) || 1;
+            const type = typeSelect.value;
+            const startWithLorem = startWithLoremCheck.checked;
+
+            outputText.innerHTML = '';
+            let rawTextForCopy = '';
+
+            if (type === 'paragraphs') {
+                for (let i = 0; i < qty; i++) {
+                    let pText = generateParagraph();
+                    if (i === 0 && startWithLorem) {
+                        pText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " + pText;
+                    }
+                    const p = document.createElement('p');
+                    p.textContent = pText;
+                    outputText.appendChild(p);
+                }
+            } else if (type === 'words') {
+                let words = [];
+                if (startWithLorem && qty >= 2) {
+                    words.push("Lorem", "ipsum");
+                }
+                while (words.length < qty) {
+                    words.push(getRandomWord());
+                }
+                const p = document.createElement('p');
+                p.textContent = words.slice(0, qty).join(' ') + '.';
+                outputText.appendChild(p);
+            } else if (type === 'lists') {
+                const ul = document.createElement('ul');
+                ul.className = "list-disc pl-5 space-y-1";
+                for (let i = 0; i < qty; i++) {
+                    let itemText = generateSentence(4, 9);
+                    if (i === 0 && startWithLorem) {
+                        itemText = "Lorem ipsum dolor sit amet.";
+                    }
+                    const li = document.createElement('li');
+                    li.textContent = itemText;
+                    ul.appendChild(li);
+                }
+                outputText.appendChild(ul);
+            }
+        }
+
+        btnGenerate.addEventListener('click', generateLorem);
+
+        btnCopy.addEventListener('click', () => {
+            const textToCopy = outputText.innerText;
+            if (!textToCopy.trim()) return;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                copyStatus.classList.remove('hidden');
+                setTimeout(() => {
+                    copyStatus.classList.add('hidden');
+                }, 2000);
+            });
+        });
+
+        // Generar inicial
+        generateLorem();
+    </script>
+</body>
+</html>

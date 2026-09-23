@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador de Palabras y Caracteres Online Gratis | HerramientasText</title>
-    <meta name="description" content="Herramienta gratuita para contar palabras, caracteres, párrafos y tiempo estimado de lectura en tiempo real. Ideal para escritores, estudiantes y SEO.">
+    <title>Contador de Palabras y Caracteres Gratis | HerramientasText</title>
+    <meta name="description" content="Cuenta palabras, caracteres, párrafos y tiempo de lectura en tiempo real con nuestra herramienta gratuita online.">
     
     <script>
-        // Aplicar modo oscuro inmediatamente para evitar parpadeos blancos al cargar
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
@@ -30,7 +29,7 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex flex-col justify-between transition-colors duration-200">
 
-    <!-- Navegación con Menú -->
+    <!-- Navegación -->
     <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
@@ -38,9 +37,10 @@
                 <span class="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 font-semibold px-2.5 py-1 rounded-full">Gratis</span>
             </div>
             <nav class="flex flex-wrap items-center gap-4 text-sm font-medium">
-                <a href="index.html" class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 pb-1">Contador de Palabras</a>
-                <a href="conversor.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Conversor de Texto</a>
-                <a href="detector-ia.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Detector de IA</a>
+                <a href="index.html" class="text-indigo-600 dark:text-indigo-400 font-bold border-b-2 border-indigo-600 dark:border-indigo-400 pb-1">Contador</a>
+                <a href="conversor.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Conversor</a>
+                <a href="detector-ia.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Detector IA</a>
+                <a href="lorem-ipsum.html" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Lorem Ipsum</a>
                 
                 <!-- Botón Modo Oscuro -->
                 <button id="theme-toggle" class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm transition ml-2 border border-gray-200 dark:border-gray-600" title="Cambiar tema">
@@ -55,61 +55,52 @@
     <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">Contador de Palabras y Caracteres</h2>
-            <p class="text-gray-600 dark:text-gray-400">Pega o escribe tu texto a continuación para analizarlo en tiempo real.</p>
+            <p class="text-gray-600 dark:text-gray-400">Escribe o pega tu texto a continuación para analizar su longitud en tiempo real.</p>
         </div>
 
-        <!-- Banner AdSense Superior -->
+        <!-- Anuncio AdSense Superior -->
         <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
             [Espacio reservado para Anuncio Google AdSense]
         </div>
 
         <!-- Área de Texto -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 mb-8">
-            <textarea 
-                id="text-input" 
-                class="w-full h-64 p-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-y text-gray-700 dark:text-gray-100 dark:bg-gray-900 placeholder-gray-400 focus:outline-none transition" 
-                placeholder="Escribe o pega tu texto aquí..."></textarea>
-
-            <!-- Botones de Acción -->
-            <div class="flex flex-wrap gap-3 mt-4 justify-between items-center">
-                <div class="flex gap-2">
-                    <button id="btn-copy" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow-sm text-sm transition">Copiar Texto</button>
-                    <button id="btn-clear" class="px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium rounded-lg text-sm transition">Limpiar</button>
-                </div>
-                <div id="copy-message" class="text-sm font-medium text-emerald-600 dark:text-emerald-400 hidden">¡Texto copiado al portapapeles!</div>
+        <div class="mb-6">
+            <textarea id="text-input" class="w-full h-64 p-4 border border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-800 dark:text-gray-100 resize-y shadow-sm text-base outline-none transition" placeholder="Pega o escribe tu texto aquí..."></textarea>
+            <div class="flex justify-between items-center mt-2 text-xs text-gray-500 dark:text-gray-400">
+                <span id="reading-time">Tiempo estimado de lectura: 0 min</span>
+                <button id="btn-clear" class="hover:text-red-500 transition cursor-pointer">Limpiar texto</button>
             </div>
         </div>
 
-        <!-- Tarjetas de Estadísticas -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="bg-indigo-50 dark:bg-indigo-950/40 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900 text-center">
-                <span id="word-count" class="block text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">0</span>
-                <span class="text-xs font-semibold uppercase text-indigo-700 dark:text-indigo-300 tracking-wider">Palabras</span>
+        <!-- Tarjetas de Métricas -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm text-center">
+                <span class="block text-2xl font-bold text-indigo-600 dark:text-indigo-400" id="word-count">0</span>
+                <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Palabras</span>
             </div>
-            <div class="bg-emerald-50 dark:bg-emerald-950/40 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900 text-center">
-                <span id="char-count" class="block text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">0</span>
-                <span class="text-xs font-semibold uppercase text-emerald-700 dark:text-emerald-300 tracking-wider">Caracteres</span>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm text-center">
+                <span class="block text-2xl font-bold text-indigo-600 dark:text-indigo-400" id="char-count">0</span>
+                <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Caracteres</span>
             </div>
-            <div class="bg-amber-50 dark:bg-amber-950/40 p-4 rounded-xl border border-amber-100 dark:border-amber-900 text-center">
-                <span id="paragraph-count" class="block text-3xl font-extrabold text-amber-600 dark:text-amber-400">0</span>
-                <span class="text-xs font-semibold uppercase text-amber-700 dark:text-amber-300 tracking-wider">Párrafos</span>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm text-center">
+                <span class="block text-2xl font-bold text-indigo-600 dark:text-indigo-400" id="char-no-spaces-count">0</span>
+                <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Sin Espacios</span>
             </div>
-            <div class="bg-purple-50 dark:bg-purple-950/40 p-4 rounded-xl border border-purple-100 dark:border-purple-900 text-center">
-                <span id="reading-time" class="block text-3xl font-extrabold text-purple-600 dark:text-purple-400">0 min</span>
-                <span class="text-xs font-semibold uppercase text-purple-700 dark:text-purple-300 tracking-wider">Lectura</span>
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm text-center">
+                <span class="block text-2xl font-bold text-indigo-600 dark:text-indigo-400" id="paragraph-count">0</span>
+                <span class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-400">Párrafos</span>
             </div>
         </div>
 
-        <!-- Banner AdSense Inferior -->
+        <!-- Anuncio AdSense Inferior -->
         <div class="my-6 min-h-[90px] bg-gray-100 dark:bg-gray-800 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-xs text-gray-400 dark:text-gray-500">
             [Espacio reservado para Anuncio Google AdSense]
         </div>
 
         <!-- Sección Informativa / SEO -->
         <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-sm space-y-4">
-            <h3 class="text-lg font-bold text-gray-800 dark:text-white">¿Por qué usar nuestro contador de palabras?</h3>
-            <p>Nuestra herramienta te permite analizar la longitud de tus textos al instante. Ya sea que estés redactando una entrada para un blog, un ensayo académico, un tuit o una meta descripción para SEO, contar con un límite preciso de caracteres y palabras es fundamental.</p>
-            <p>El cálculo del tiempo estimado de lectura se realiza considerando una velocidad media de 200 palabras por minuto, ideal para planificar el impacto de tus contenidos digitales.</p>
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">¿Por qué es importante contar palabras y caracteres?</h3>
+            <p>Contar la extensión de un texto es esencial para cumplir con límites en redes sociales (como X/Twitter o publicaciones de LinkedIn), redactar ensayos universitarios, optimizar artículos SEO para motores de búsqueda o mantener la longitud exacta en tus copys publicitarios.</p>
         </section>
     </main>
 
@@ -118,17 +109,18 @@
         <div class="max-w-5xl mx-auto px-4 text-center text-xs text-gray-500 dark:text-gray-400 space-y-2">
             <p>&copy; 2026 HerramientasText. Todos los derechos reservados. Herramientas gratuitas online.</p>
             <p>
-                <a href="index.html" class="hover:underline">Contador de Palabras</a> | 
-                <a href="conversor.html" class="hover:underline">Conversor de Texto</a> | 
-                <a href="detector-ia.html" class="hover:underline">Detector de IA</a> | 
+                <a href="index.html" class="hover:underline">Contador</a> | 
+                <a href="conversor.html" class="hover:underline">Conversor</a> | 
+                <a href="detector-ia.html" class="hover:underline">Detector IA</a> | 
+                <a href="lorem-ipsum.html" class="hover:underline">Lorem Ipsum</a> | 
                 <a href="privacidad.html" class="font-semibold text-gray-700 dark:text-gray-300 hover:underline">Política de Privacidad</a>
             </p>
         </div>
     </footer>
 
-    <!-- Lógica de Javascript -->
+    <!-- Lógica JS -->
     <script>
-        // Manejo del Modo Oscuro
+        // Modo Oscuro Toggle
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -152,48 +144,43 @@
             }
         });
 
-        // Lógica de Conteo
+        // Contador de Palabras
         const textInput = document.getElementById('text-input');
         const wordCount = document.getElementById('word-count');
         const charCount = document.getElementById('char-count');
+        const charNoSpacesCount = document.getElementById('char-no-spaces-count');
         const paragraphCount = document.getElementById('paragraph-count');
         const readingTime = document.getElementById('reading-time');
-        const btnCopy = document.getElementById('btn-copy');
         const btnClear = document.getElementById('btn-clear');
-        const copyMessage = document.getElementById('copy-message');
-
-        function updateCounts() {
-            const text = textInput.value;
-            charCount.textContent = text.length;
-
-            const trimmedText = text.trim();
-            const words = trimmedText ? trimmedText.split(/\s+/).filter(word => word.length > 0) : [];
-            wordCount.textContent = words.length;
-
-            const paragraphs = text.split(/\n+/).filter(para => para.trim().length > 0);
-            paragraphCount.textContent = paragraphs.length;
-
-            const minutes = Math.ceil(words.length / 200);
-            readingTime.textContent = words.length === 0 ? '0 min' : `${minutes} min`;
-        }
 
         textInput.addEventListener('input', updateCounts);
-
         btnClear.addEventListener('click', () => {
             textInput.value = '';
             updateCounts();
-            copyMessage.classList.add('hidden');
         });
 
-        btnCopy.addEventListener('click', () => {
-            if (textInput.value.length === 0) return;
-            navigator.clipboard.writeText(textInput.value).then(() => {
-                copyMessage.classList.remove('hidden');
-                setTimeout(() => {
-                    copyMessage.classList.add('hidden');
-                }, 3000);
-            });
-        });
+        function updateCounts() {
+            const text = textInput.value;
+
+            // Caracteres totales
+            charCount.textContent = text.length;
+
+            // Caracteres sin espacios
+            charNoSpacesCount.textContent = text.replace(/\s/g, '').length;
+
+            // Palabras
+            const words = text.trim().split(/\s+/).filter(item => item.length > 0);
+            const numWords = text.trim() === '' ? 0 : words.length;
+            wordCount.textContent = numWords;
+
+            // Párrafos
+            const paragraphs = text.split(/\n+/).filter(item => item.trim().length > 0);
+            paragraphCount.textContent = text.trim() === '' ? 0 : paragraphs.length;
+
+            // Tiempo de lectura (promedio 200 palabras/min)
+            const minutes = Math.ceil(numWords / 200);
+            readingTime.textContent = `Tiempo estimado de lectura: ${numWords === 0 ? 0 : minutes} min`;
+        }
     </script>
 </body>
 </html>
